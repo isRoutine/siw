@@ -26,8 +26,5 @@ public class OrderLine {
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
-	
-	
-	
-	
+		
 }

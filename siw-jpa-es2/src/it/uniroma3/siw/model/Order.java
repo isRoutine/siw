@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -23,10 +24,10 @@ public class Order {
 	private LocalDateTime creationTime;
 	
 	@OneToMany
-	@JoinColumn(name = "orders_id")
+	@JoinColumn(name = "orders_id") // questà sarà foreignkey nella tabella orderline
 	private List<OrderLine> orderLines;
 	
-	@OneToMany
+	@ManyToOne
 	private Customer customer;
 
 	public LocalDateTime getCreationTime() {
