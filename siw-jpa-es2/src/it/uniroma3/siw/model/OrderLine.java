@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class OrderLine {
@@ -16,8 +16,8 @@ public class OrderLine {
 	private Double unitPrice;
 	private Integer quantity;
 	
-	@ManyToOne
-	//@OneToOne (funziona uguale?) lo schema non varia
+	//@ManyToOne
+	@OneToOne //(funziona uguale?) lo schema non varia
 	private Product product;
 
 	public Integer getQuantity() {
