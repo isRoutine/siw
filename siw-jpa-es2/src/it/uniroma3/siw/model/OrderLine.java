@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class OrderLine {
@@ -14,12 +15,11 @@ public class OrderLine {
 	
 	private Double unitPrice;
 	private Integer quantity;
-	public Double getUnitPrice() {
-		return unitPrice;
-	}
-	public void setUnitPrice(Double unitPrice) {
-		this.unitPrice = unitPrice;
-	}
+	
+	@ManyToOne
+	//@OneToOne (funziona uguale?) lo schema non varia
+	private Product product;
+
 	public Integer getQuantity() {
 		return quantity;
 	}
@@ -27,4 +27,11 @@ public class OrderLine {
 		this.quantity = quantity;
 	}
 		
+	public Double getUnitPrice() {
+		return unitPrice;
+	}
+	public void setUnitPrice(Double unitPrice) {
+		this.unitPrice = unitPrice;
+	}
+	
 }
