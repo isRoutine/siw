@@ -1,16 +1,25 @@
 package it.uniroma3.siw.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Azienda {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
 	private String ragioneSociale;
 	
+	// in caso di persist/remove di un oggetto Azienda, ha senso 
+	// che sia automaticamente fatta una persist/remove sul suo 
+	// indirizzo perche' e' strettamente legato
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	private Indirizzo indirizzoSede;
 	
 	private String numeroDiTelefono;

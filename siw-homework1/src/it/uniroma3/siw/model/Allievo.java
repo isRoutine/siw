@@ -4,12 +4,17 @@ import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Allievo {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
 	private String nome;
@@ -24,8 +29,10 @@ public class Allievo {
 	
 	private String email;
 	
+	@ManyToOne
 	private Azienda azienda;
 	
+	@ManyToMany(mappedBy = "allievi")
 	private List<Corso> corsi;
 
 	public long getId() {
