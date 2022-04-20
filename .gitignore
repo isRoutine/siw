@@ -7,8 +7,10 @@
 ### Eclipse ###
 .metadata
 .metadata/
+.metadata/.plugins
 metadata/
 .metadata/**
+**/metadata/*
 bin/
 tmp/
 *.tmp
