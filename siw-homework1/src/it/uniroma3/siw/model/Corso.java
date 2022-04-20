@@ -24,10 +24,11 @@ public class Corso {
 	
 	private int mesi;
 	
-	// imposto una politica di fetch di tipo eager
+	// imposto una politica di fetch di tipo eager;
 	// se sto analizzando un corso, molto probabilmente
-	// la cosa che mi interessa maggiormente sono i partecipanti
-	// un po' come avevamo visto per order e orderline
+	// la cosa che mi interessa maggiormente sono i partecipanti...
+	// un po' come avevamo visto per order e orderline nei primi
+	// esercizi di jpa
 	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Allievo> allievi;
 	
