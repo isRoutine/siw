@@ -14,7 +14,7 @@ public class Indirizzo {
 	
 	private String via;
 	
-	private int numeroCivico;
+	private String numeroCivico;
 	
 	private String comune;
 	
@@ -24,7 +24,7 @@ public class Indirizzo {
 	
 	public Indirizzo() {}
 	
-	public Indirizzo(String via, int numeroCivico, String comune, String cap, String provincia) {
+	public Indirizzo(String via, String numeroCivico, String comune, String cap, String provincia) {
 		this.via = via;
 		this.numeroCivico = numeroCivico;
 		this.comune = comune;
@@ -48,11 +48,11 @@ public class Indirizzo {
 		this.via = via;
 	}
 
-	public int getNumeroCivico() {
+	public String getNumeroCivico() {
 		return numeroCivico;
 	}
 
-	public void setNumeroCivico(int numeroCivico) {
+	public void setNumeroCivico(String numeroCivico) {
 		this.numeroCivico = numeroCivico;
 	}
 

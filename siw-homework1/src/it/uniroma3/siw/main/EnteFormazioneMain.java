@@ -14,7 +14,7 @@ public class EnteFormazioneMain {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("ente_formazione-unit");
 		EntityManager em = emf.createEntityManager();
 		
-		Indirizzo indirizzo = new Indirizzo("Via Della Vasca Navale", 59, "Roma", "00000", "Roma");	
+		Indirizzo indirizzo = new Indirizzo("Via Della Vasca Navale", "59", "Roma", "00000", "Roma");	
 		Azienda azienda = new Azienda();
 		azienda.setRagioneSociale("Ferrari spa");
 		azienda.setIndirizzoSede(indirizzo);
