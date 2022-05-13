@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Inserimento persona</title>
+</head>
+<body>
+	<form th:action=@{/persona} method="post" th:object="${persona}">
+		<div>nome: <input type="text" th:field="*{nome}"/></div>
+		<div>cognome: <input type="text" th:field="*{cognome}"/></div>
+		<div>eta: <input type="text" th:field="*{eta}"/></div>
+		<div><button type="submit">Conferma</button></div>
+	</form>
+</body>
+</html>
