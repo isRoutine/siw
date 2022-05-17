@@ -7,4 +7,5 @@ import com.example.demo.model.Persona;
 // 													   Class Type, Class id
 public interface PersonaRepository extends CrudRepository<Persona, Long> {
 
+	public boolean existsByNomeAndCognomeAndEta(String nome, String cognome, Integer eta);
 }

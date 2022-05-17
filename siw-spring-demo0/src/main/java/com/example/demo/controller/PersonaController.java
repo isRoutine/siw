@@ -13,14 +13,19 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.demo.controller.validator.PersonaValidator;
 import com.example.demo.model.Persona;
 import com.example.demo.service.PersonaService;
 
 @Controller
 public class PersonaController {
 
-	@Autowired
-	private PersonaService ps;
+	@Autowired 
+	private PersonaService personaService;
+	
+	@Autowired 
+	private PersonaValidator personaValidator;
+	
 	 
 	/*
 	 * Richieste al server:
@@ -41,9 +46,12 @@ public class PersonaController {
 	@PostMapping("/persona")
 	public String addPersona(@Valid @ModelAttribute("persona") Persona persona, 
 								BindingResult bindingResult, Model model) {
+		
+		personaValidator.validate(persona, bindingResult);
+		
 		if(!bindingResult.hasErrors()) {
-			this.ps.save(persona);
-			model.addAttribute("persona", this.ps.findById(persona.getId()));
+			personaService.save(persona);
+			model.addAttribute("persona", persona);
 			return "persona.html";
 		}
 		return "personaForm.html";
@@ -54,7 +62,7 @@ public class PersonaController {
 	 */
 	@GetMapping("/persona")
 	public String getPersone(Model model) {
-		List<Persona> persone = ps.findAll();
+		List<Persona> persone = personaService.findAll();
 		model.addAttribute("persone", persone);
 		return "persone.html";
 	}
@@ -65,8 +73,8 @@ public class PersonaController {
 	 */
 	@GetMapping("/persona/{id}")
 	public String getPersona(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("persona", this.ps.findById(id));
-		return null;
+		model.addAttribute("persona", this.personaService.findById(id));
+		return "persona.html";
 	}
 	
 	
