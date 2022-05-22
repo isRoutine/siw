@@ -84,4 +84,31 @@ public class PersonaController {
 		return "personaForm.html";
 	}
 	
+	
+	@GetMapping("/delete/{id}")
+	public String deletePersona(@PathVariable("id") Long id, Model model) {
+		this.personaService.deleteById(id);
+		return "persone.html";
+	}
+
+	@GetMapping("/edit/{id}")
+	public String selectPersona(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("persona", this.personaService.findById(id));
+		return "personaEditForm.html";
+	}
+	
+	@PostMapping("/edit")
+	public String editPersona(@Valid @ModelAttribute("persona") Persona persona,
+									BindingResult bindingResult, Model model) {
+		this.personaValidator.validate(persona, bindingResult);
+		if(!bindingResult.hasErrors()) {
+			this.personaService.save(persona);
+			List<Persona> persone = this.personaService.findAll();
+			model.addAttribute("persone", persone);
+			return "persone.html";
+		}
+		return "personaEditForm.html";
+	}	
+	
+	
 }

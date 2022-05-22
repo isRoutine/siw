@@ -9,9 +9,13 @@
     <div>
     	<h4><strong>Persone:</strong></h4>
 		<ul>
-			<li th:each="persona : ${persone}">
-				<a href="persona.html" th:href="@{'/persona' + '/' + ${persona.id}}"
-				th:text="${persona.nome} + ' ' + ${persona.cognome}">Paolo Rossi</a>
+			<li th:each="persona : ${persone}"> 
+				<span>
+					<a href="/persona" th:href="@{'/persona' + '/' + ${persona.id}}"
+					th:text="${persona.nome} + ' ' + ${persona.cognome}">Paolo Rossi</a>			
+				</span>
+				<span><a href="/persone" th:href="@{'/delete' + '/' + ${persona.id}}">Cancella</a></span>
+				<span><a href="/persone" th:href="@{'edit/' + ${persona.id}}">Modifica</a></span>
 			</li>
 		</ul>
 	</div>

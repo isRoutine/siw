@@ -22,6 +22,25 @@ public class PersonaService {
 		personaRepository.save(persona);
 	}
 	
+	@Transactional
+	public void update(Persona persona) {
+		Persona foo = this.findById(persona.getId());
+		foo.setNome(persona.getNome());
+		foo.setCognome(persona.getCognome());
+		foo.setEta(persona.getEta());
+		this.personaRepository.save(foo);
+	}
+	
+	@Transactional
+	public void delete(Persona persona) {
+		personaRepository.delete(persona);
+	}
+	
+	@Transactional
+	public void deleteById(Long id) {
+		personaRepository.deleteById(id);
+	}
+	
 	// non necessaria la notazione @Transactional, sono metodi di lettura
 	public Persona findById(Long id) {
 		return personaRepository.findById(id).get();
